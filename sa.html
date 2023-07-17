@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <label for="string">Enter a string:</label><br><br><br>
+    <input type="text" id="string"><br><br><br>
+
+    <button onclick="applyStringMethods()">Apply String Methods</button>
+    <p id="output"></p>
+    
+    
+  </body>
+</html>
+<script>
+    function applyStringMethods() {
+  // Get the input from the text input field
+  let string = document.getElementById("string").value;
+  
+  // Apply the string methods
+  let upperString = string.toUpperCase();
+  let lowerString = string.toLowerCase();
+  let strippedString = string.trim();
+  let replacedString = string.replace("World", "Universe");
+  let splitString = string.split("      ");
+  let Stringlength = string.length;
+  let substring = string.substring(3,6);
+  
+  
+  // Build the output string
+  let outputString = "";
+  outputString += "Original String: " + string + "<br>";
+  outputString += "Uppercase String: " + upperString + "<br>";
+  outputString += "Lowercase String: " + lowerString + "<br>";
+  outputString += "Stripped String: " + strippedString + "<br>";
+  outputString += "Replaced String: " + replacedString + "<br>";
+  outputString += "Split String: " + splitString.join("    ") + "<br>";
+  outputString += "string length: " + Stringlength + "<br>";
+  outputString += "substring: " +string.substring +"<br>";
+  // Display the results in the output paragraph element
+  document.getElementById("output").innerHTML = outputString;
+}
+</script>

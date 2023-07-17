@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fruit and Color Finder</title>
+</head>
+<body>
+	<label for="input">Enter a paragraph:</label><br>
+	<textarea id="input" rows="10" cols="50"></textarea><br><br>
+	<button onclick="findFruitsAndColors()">Find Fruits and Colors</button><br><br>
+	<div id="output"></div>
+
+	<script>
+		function findFruitsAndColors() {
+			var input = document.getElementById("input").value;
+
+			
+			var fruits = ["apple", "banana", "orange", "grape", "mango","lichi","kiwi","Apple", "Banana", "Orange", "Mango", "Pineapple", "Grapefruit", "Kiwi", "Lemon", "Lime", "Peach", "Pear", "Plum", "Watermelon", "Cantaloupe", "Honeydew", "Blueberry", "Raspberry", "Strawberry", "Cherry", "Apricot", "Blackberry", "Boysenberry", "Cranberry", "Currant", "Elderberry", "Gooseberry", "Grape", "Guava", "Jackfruit", "Lychee", "Nectarine", "Papaya", "Passion fruit", "Persimmon", "Pomegranate", "Quince", "Redcurrant", "Starfruit", "Tangerine", "Tomato" , "Ugli fruit", "Whitecurrant", "Yuzu", "Ackee", "Breadfruit", "Durian", "Fig", "Grumichama", "Jabuticaba", "Longan"];
+			var colors = ["red", "green", "blue", "yellow", "purple","Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Pink", "Brown", "Gray", "Black", "White", "Beige", "Teal", "Turquoise", "Lavender", "Magenta", "Fuchsia", "Gold", "Silver", "Bronze", "Copper", "Maroon", "Olive", "Navy", "Indigo", "Crimson", "Burgundy", "Chocolate", "Khaki", "Mauve", "Mint", "Mustard", "Plum", "Rose", "Rust", "Sage", "Salmon", "Sapphire", "Scarlet", "Sepia", "Sienna", "Slate", "Tan", "Tangerine", "Taupe", "Terracotta", "Violet", "Wheat", "Zinc"];
+
+					var words = input.split(" ");
+
+			
+			var matchingFruits = [];
+			var matchingColors = [];
+
+			
+			for (var i = 0; i < words.length; i++) {
+				var word = words[i].toLowerCase(); 
+
+				if (fruits.includes(word)) { 
+					matchingFruits.push(word);
+				}
+
+				if (colors.includes(word)) { 
+					matchingColors.push(word);
+				}
+			}
+
+			
+			var output = document.getElementById("output");
+			output.innerHTML = "<b>Fruits:</b> " + matchingFruits.join(", ") + "<br><b>Colors:</b> " + matchingColors.join(", ");
+		}
+	</script>
+</body>
+</html>

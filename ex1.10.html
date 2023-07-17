@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .container {
+      position: relative;
+      width: 500px;
+      height: 300px;
+    }
+    
+    .image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .cursor {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 100%;
+      background-color: black;
+      cursor: ew-resize;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img class="image" src="pic_trulli.jpg" alt="Left Image">
+    <img class="image" src="right_image.jpg" alt="Right Image">
+    <div id="cursor" class="cursor"></div>
+  </div>
+
+  <script>
+    // Get the cursor element
+    var cursor = document.getElementById("cursor");
+    
+    // Get the container element
+    var container = document.querySelector(".container");
+    
+    // Set the initial position of the cursor within the container
+    var initialX = container.offsetWidth / 2;
+    var currentX = initialX;
+    
+    // Bind the mousedown event to start dragging
+    cursor.addEventListener("mousedown", function (event) {
+      // Prevent default text selection behavior
+      event.preventDefault();
+      
+      // Store the initial mouse position
+      var initialMouseX = event.clientX;
+      
+      // Calculate the initial cursor position relative to the container
+      var rect = container.getBoundingClientRect();
+      var offset = initialX - rect.left;
+      
+      // Bind the mousemove event to update the cursor position
+      document.addEventListener("mousemove", moveCursor);
+      
+      // Bind the mouseup event to stop dragging
+      document.addEventListener("mouseup", function () {
+        // Unbind the mousemove and mouseup events
+        document.removeEventListener("mousemove", moveCursor);
+        document.removeEventListener("mouseup", arguments.callee);
+      });
+      
+      // Function to handle the mousemove event and update the cursor position
+      function moveCursor(event) {
+        // Calculate the new cursor position based on the mouse movement
+        var deltaX = event.clientX - initialMouseX;
+        currentX = offset + deltaX;
+        
+        // Clamp the cursor position within the container boundaries
+        currentX = Math.max(0, Math.min(container.offsetWidth, currentX));
+        
+        // Update the cursor's left position
+        cursor.style.left = currentX + "px";
+      }
+    });
+  </script>
+</body>
+</html>

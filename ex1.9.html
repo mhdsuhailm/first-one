@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+  <title>Language Selector</title>
+</head>
+
+<body>
+    <label for="languageselect">selct a language</label>
+  <select id="languageSelect" onchange="changeLanguage()">
+    <option value="en-GB">English</option>
+    <option value="es-ES">Spanish</option>
+    <option value="vi">Vietnamese</option>
+    <option value="zh-CN">Chinese</option>
+    <option value="ko-KR">Korean</option>
+  </select>
+
+  <div id="content">
+    <h1>English Content</h1>
+    <img src="C:/Users/muhammad suhail/Desktop/prog/mexican-vintage-background.zip" alt="English Image">
+  </div>
+
+  <script>
+    function changeLanguage() {
+      var select = document.getElementById("languageSelect");
+      var selectedLang = select.options[select.selectedIndex].value;
+
+      var contentDiv = document.getElementById("content");
+
+      if (selectedLang === "en-GB") {
+        contentDiv.innerHTML = `
+          <h1>English Content</h1>
+          <img src="C:/Users/muhammad suhail/Desktop/prog/mexican-vintage-background.zip" alt="English Image">
+        `;
+      } else if (selectedLang === "es-ES") {
+        contentDiv.innerHTML = `
+          <h1>Spanish Content</h1>
+          <img src=""C:/Users/muhammad suhail/Desktop/prog/375306-PBRSKN-852.jpg"" alt="Spanish Image">
+        `;
+      } else if (selectedLang === "vi") {
+        contentDiv.innerHTML = `
+          <h1>Vietnamese Content</h1>
+          <img src="vietnamese-image.jpg" alt="Vietnamese Image">
+        `;
+      } else if (selectedLang === "zh-CN") {
+        contentDiv.innerHTML = `
+          <h1>Chinese Content</h1>
+          <img src="chinese-image.jpg" alt="Chinese Image">
+        `;
+      } else if (selectedLang === "ko-KR") {
+        contentDiv.innerHTML = `
+          <h1>Korean Content</h1>
+          <img src="korean-image.jpg" alt="Korean Image">
+        `;
+      }
+    }
+  </script>
+</body>
+
+</html>
